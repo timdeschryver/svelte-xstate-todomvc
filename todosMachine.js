@@ -71,9 +71,12 @@ export const todosMachine = Machine({
       })
     },
     CLEAR_COMPLETED: {
-      actions: assign({
-        todos: ctx => ctx.todos.filter(todo => !todo.completed)
-      })
+      actions: [
+        assign({
+          todos: ctx => ctx.todos.filter(todo => !todo.completed)
+        }),
+        "persist"
+      ]
     }
   }
 });
